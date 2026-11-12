@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}NOVA — Diseño elegido para todos los días{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Selección de temporada
+            </p>
+
+            <h1>Menos, pero<br><em>mejor elegido.</em></h1>
+
+            <p class="hero-description">
+                Objetos bien pensados para acompañar tu ritmo.
+                Diseño útil, materiales honestos y detalles que se sienten.
+            </p>
+
+            <div class="hero-actions">
+                <a class="button button-primary" href="{% url 'lista_productos' %}">
+                    Explorar catálogo <span aria-hidden="true">↗</span>
+                </a>
+                <p class="hero-count">
+                    <strong>{{ total_productos|stringformat:"02d" }}</strong>
+                    <span>piezas disponibles</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="hero-art" aria-label="Composición gráfica de NOVA" role="img">
+            <span class="hero-art-label">NOVA OBJECTS<br>EST. 2026</span>
+            <span class="hero-orbit hero-orbit-one"></span>
+            <span class="hero-orbit hero-orbit-two"></span>
+            <span class="hero-sculpture"></span>
+            <span class="hero-art-index">01 / 03</span>
+        </div>
+    </div>
+</section>
+
+<section class="intro-section">
+    <div class="container intro-grid">
+        <p class="eyebrow">Elegir con intención</p>
+        <h2>Lo cotidiano también merece diseño.</h2>
+        <p>
+            Una colección pequeña, útil y duradera. Encuentra algo que encaje
+            contigo y úsalo todos los días.
+        </p>
+        <a class="text-link" href="{% url 'lista_productos' %}">
+            Ver todos los productos <span aria-hidden="true">→</span>
+        </a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10130f">
+    <title>{% block title %}NOVA — objetos para tu día{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="{% url 'inicio' %}" aria-label="NOVA, página de inicio">
+                <span class="brand-mark">N</span>
+                <span class="brand-name">NOVA<span>.</span></span>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'lista_productos' %}">Catálogo</a>
+            </nav>
+
+            <a class="header-cta" href="{% url 'lista_productos' %}">
+                Explorar <span aria-hidden="true">↗</span>
+            </a>
+
+            <button class="menu-toggle" type="button"
+                    aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="main-nav">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="contenido">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span class="brand-name">NOVA<span>.</span></span>
+            <p>Objetos elegidos para acompañar tu día.</p>
+            <span>© 2026 NOVA</span>
+        </div>
+    </footer>
+
+    <script src="{% static 'catalogo/js/main.js' %}" defer></script>
+</body>
+</html>

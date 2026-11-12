@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Catálogo — NOVA{% endblock %}
+
+{% block content %}
+<section class="catalog-section">
+    <div class="container">
+        <div class="catalog-heading">
+            <div>
+                <p class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    La colección NOVA
+                </p>
+                <h1>Hechos para<br><em>formar parte.</em></h1>
+            </div>
+            <p class="catalog-summary">
+                Diseño funcional, detalles cuidados y objetos que tienen
+                su lugar en tu día.
+            </p>
+        </div>
+
+        <div class="catalog-toolbar">
+            <span>Productos disponibles</span>
+            <span>{{ productos|length|stringformat:"02d" }} artículos</span>
+        </div>
+
+        {% if productos %}
+            <div class="product-grid">
+                {% for producto in productos %}
+                    <article class="product-card">
+                        <div class="product-art product-art-{{ forloop.counter }}"
+                             aria-hidden="true">
+                            <span class="product-art-label">
+                                {{ producto.categoria|upper }}
+                            </span>
+                            <span class="product-shape"></span>
+                            <span class="product-art-index">
+                                0{{ forloop.counter }}
+                            </span>
+                        </div>
+
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span>{{ producto.categoria|title }}</span>
+                                <span>{{ producto.fecha_creacion|date:"d M Y" }}</span>
+                            </div>
+                            <h2>{{ producto.nombre|title }}</h2>
+                            <p>{{ producto.descripcion }}</p>
+                            <div class="product-bottom">
+                                <strong>S/ {{ producto.precio|floatformat:2 }}</strong>
+                                <span class="product-arrow" aria-hidden="true">↗</span>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h2>Aún no hay productos disponibles</h2>
+                <p>Vuelve pronto para descubrir la colección.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
